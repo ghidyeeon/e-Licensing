@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for License</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: white;
+        }
+
+        .instructions {
+            font-size: 16px;
+            background-color: #f8f9fa;
+            border: 2px solid black;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 50px;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block; 
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-navigation button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-navigation button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-navigation button[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .submit-button {
+            background-color: #28a745;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
+        }
+        h3, h4 {
+            margin-bottom: 20px;
+        }
+
+        .item {
+            border: 2px solid black;
+            padding: 50px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+  
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;    
+            cursor: pointer;
+            margin: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-file-input {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 20px;
+        }
+
+        .custom-file-label:hover {
+            background-color: #0056b3;
+        }
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .form-row label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-row input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-row textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+        .country-code-select {
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .phone-number {
+            width: calc(100% - 120px);
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PNRI/NRD APPLICATION FORM - 01 APPLICATION FOR RADIOACTIVE MATERIAL LICENSE
+        </h1>
+    
+    <div class="instructions">
+        <strong>INSTRUCTIONS:</strong> To complete this application, refer to Part 15 of the Code of PNRI Regulations and the corresponding Regulatory Guide for the Preparation of Application for a License for the Use of Sealed Radioactive Sources in Large Irradiators. Submit duplicate copies of the completed application form, with the specified application/license fee, and all required attachments, to the Nuclear Regulatory Division, Philippine Nuclear Research Institute, Commonwealth Avenue, Diliman, Quezon City.
+    </div>
+
+    <div class="form-container">
+        <form action="handler.php" method="post" enctype="multipart/form-data">
+            <!-- Form fields -->
+        
+            <!-- Page 1 -->
+            <div class="form-page active"> 
+                <div class="form-section">
+                    <label for="applicationType">I. Application for:</label>
+                    <select id="applicationType" name="applicationType" required>
+                    <option value="" disabled selected>Choose an application</option>
+                    <option value="indentSale">NEW LICENSE</option>
+                    <option value="bloodIrradiator">AMENDMENT TO LICENSE NO</option>
+                    <option value="commercialSale">RENEWAL OF LICENSE NO</option>
+                    <option value="educationTraining">RENEWAL WITH AMENDMENT OF LICENSE NO</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <label>I. Type of License: (Check Appropriate box)</label>
+                    <div class="checkbox-group">
+                    <label><input type="checkbox" name="usage" value="indentSale"> Indent Sale</label>
+                    <label><input type="checkbox" name="usage" value="bloodIrradiator"> Blood Irradiator</label>
+                    <label><input type="checkbox" name="usage" value="commercialSale"> Commercial Sale and Distribution</label>
+                    <label><input type="checkbox" name="usage" value="educationTraining"> Education and Training</label>
+                    <label><input type="checkbox" name="usage" value="fieldRadiography"> Field Radiography</label>
+                    <label><input type="checkbox" name="usage" value="fixedGauge"> Fixed Gauge</label>
+                    <label><input type="checkbox" name="usage" value="nuclearServices"> Nuclear Technical Services</label>
+                    <label><input type="checkbox" name="usage" value="portableGauge"> Portable Gauge</label>
+                    <label><input type="checkbox" name="usage" value="radioimmunoassay"> Radioimmunoassay</label>
+                    <label><input type="checkbox" name="usage" value="tracerStudies"> Tracer Studies</label>
+                    <label><input type="checkbox" name="usage" value="wellLogging"> Well Logging, Dredging, and Spinning Pipe</label>
+                    <label><input type="checkbox" name="usage" value="others"> Others (Please specify)</label>
+                    <input type="text" name="others" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>GENERAL INFORMATION</h2>
+                    <label>I. NAME AND MAILING ADDRESS OF APPLICANT.</label>
+                    <input type="text" name="company_name" placeholder="Company Name" required>
+                    <input type="text" name="address" placeholder="Address" required>
+                    <input type="text" name="head_of_company" placeholder="Head of the Company" required>
+                    <input type="text" name="telephone_number" placeholder="Telephone Number" required>
+                    <input type="text" name="fax" placeholder="Fax Number" required>
+                    <input type="email" name="email" placeholder="E-Mail Address" required>
+                </div>
+
+                <div class="form-section">
+                    <label>II. PERSON TO BE CONTACTED ABOUT THIS APPLICATION.</label>
+                    <input type="text" name="contact_full_name" placeholder="First Name" required>
+                    <input type="text" name="contact_full_name" placeholder="Middle Name" required>
+                    <input type="text" name="contact_full_name" placeholder="Last Name" required>
+                    <input type="text" name="contact_position" placeholder="Position/Title" required>
+                    <input type="text" name="contact_address" placeholder="Address" required>
+                    <input type="tel" name="contact_phone" placeholder="Telephone/Mobile Phone Number" required>
+                    <input type="text" name="contact_fax" placeholder="Fax Number" required>
+                    <input type="email" name="contact_email" placeholder="E-Mail Address" required>
+                </div>
+
+                <div class="form-section">
+                    <label>III. RADIATION PROTECTION OFFICER/S.</label>
+                    <input type="text" name="contact_full_name" placeholder="First Name" required>
+                    <input type="text" name="contact_full_name" placeholder="Middle Name" required>
+                    <input type="text" name="contact_full_name" placeholder="Last Name" required>
+                    <input type="text" name="contact_position" placeholder="Position/Title" required>
+                    <input type="text" name="contact_address" placeholder="Address" required>
+                    <input type="tel" name="contact_phone" placeholder="Telephone/Mobile Phone Number" required>
+                    <input type="text" name="contact_fax" placeholder="Fax Number" required>
+                    <input type="email" name="contact_email" placeholder="E-Mail Address" required>
+                </div>
+
+                <div class="form-section">
+                    <label>III.A. ASSISTANT RPO</label>
+                    <input type="text" name="contact_full_name" placeholder="First Name" required>
+                    <input type="text" name="contact_full_name" placeholder="Middle Name" required>
+                    <input type="text" name="contact_full_name" placeholder="Last Name" required>
+                    <input type="text" name="contact_position" placeholder="Position/Title" required>
+                    <input type="text" name="contact_address" placeholder="Address" required>
+                    <input type="tel" name="contact_phone" placeholder="Telephone/Mobile Phone Number" required>
+                    <input type="text" name="contact_fax" placeholder="Fax Number" required>
+                    <input type="email" name="contact_email" placeholder="E-Mail Address" required>
+                </div>
+                <div class="form-section">
+                    <label>IV. LOCATION OF RADIOACTIVE MATERIAL AND ASSOCIATED DEVICES</label>
+                    <input type="text" name="principal_location" placeholder="Principal Location of Use and/or Storage" required>
+                    <input type="text" name="telephone_numbers_principal" placeholder="Telephone Number/s" required>
+                    <input type="text" name="other_locations" placeholder="Other Locations of Use and/or Storage" required>
+                    <input type="text" name="telephone_numbers_other" placeholder="Telephone Number/s" required>
+                </div>
+            </div>
+
+            <div class="form-page">
+                <h2>SUPPLEMENTARY FORMS AND ATTACHMENTS</h2>
+                <div class="form-row">
+                    <label for="layout">FORM - A: NUCLEAR/RADIOACTIVE MATERIALS AND PURPOSE(S) OF USE</label>
+                    <input type="file" id="layout" name="layout" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="rooms">FORM - B: RADIATION MONITORING/MEASURING INSTRUMENTATION </label>
+                    <input type="file" id="rooms" name="rooms" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="shielding">FORM - C: RADIATION WORKERS AND THEIR TRAINING AND EXPERIENCE</label>
+                    <input type="file" id="shielding" name="shielding" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="ventilation">PROOF OF LEGAL STATUS</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">FACILITY LOCATION AND LAYOUT PLAN</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+            </div>
+
+            <div class="form-page">
+                <h2>PLANS AND PROGRAMS FOR MANAGING THE RADIATION FACILITY</h2>
+                <div class="form-row">
+                    <label for="layout">RADIATION SAFETY MANAGEMENT PLAN</label>
+                    <input type="file" id="layout" name="layout" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="rooms">RADIATION PROTECTION AND SAFETY PROGRAM</label>
+                    <input type="file" id="rooms" name="rooms" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="shielding">RADIOACTIVE WASTE MANAGEMENT PROGRAM</label>
+                    <input type="file" id="shielding" name="shielding" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="ventilation">EMERGENCY PREPAREDNESS AND RESPONSE PLAN</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">SECURITY PLAN (if applicable)</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">TRANSPORT SECURITY PLAN (if applicable)</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+            </div>
+
+            <div class="form-page">
+                <h2>DECLARATION</h2>
+                <div class="form-section">
+                    <label><input type="checkbox" name="usage" value="declaration">I hereby declare that the information provided herein is complete, true, and correct to the best of my knowledge and I fully understand that all statements and representations made in this application are binding upon us. Further, I certify that this application has been prepared in accordance with the law and the relevant provisions outlined in the Code of PNRI Regulations.</label>
+                </div>
+            </div>
+
+            <div class="form-navigation">
+                <button type="button" id="prev-btn" disabled>Previous</button>
+                <button type="button" id="next-btn">Next</button>
+                <button type="submit" class="submit-button" disabled>Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pages = document.querySelectorAll('.form-page');
+            const nextButton = document.getElementById('next-btn');
+            const prevButton = document.getElementById('prev-btn');
+            const submitButton = document.querySelector('.submit-button');
+            let currentPage = 0;
+    
+            function showPage(pageIndex) {
+                pages.forEach((page, index) => {
+                    page.classList.toggle('active', index === pageIndex);
+                });
+                prevButton.disabled = pageIndex === 0;
+                nextButton.disabled = pageIndex === pages.length - 1;
+                submitButton.disabled = pageIndex !== pages.length - 1;
+                currentPage = pageIndex;
+            }
+    
+            function validateCurrentPage() {
+                const currentPageElement = pages[currentPage];
+                const inputs = currentPageElement.querySelectorAll('input[required], textarea[required]');
+                let valid = true;
+    
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        valid = false;
+                    }
+                });
+    
+                return valid;
+            }
+    
+            nextButton.addEventListener('click', function () {
+                if (validateCurrentPage()) {
+                    showPage(currentPage + 1);
+                } else {
+                    alert('Please fill in all required fields on the current page.');
+                }
+            });
+    
+            prevButton.addEventListener('click', function () {
+                showPage(currentPage - 1);
+            });
+    
+            // Handle form submission
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault();
+    
+                // Collect all form data
+                const formData = new FormData(this);
+                const data = {};
+    
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+    
+                // Save form data to localStorage
+                localStorage.setItem('formData', JSON.stringify(data));
+    
+                // Redirect to the new page
+                window.location.href = 'test2.html';
+            });
+    
+            showPage(currentPage);
+        });
+    </script>
+    
+
+</body>
+</html>

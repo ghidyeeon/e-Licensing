@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .dashboard {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .application_form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .application_form h3 {
+            margin: 0;
+            color: #34495e;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="#">Forms</a></li>
+                <li><a href="#">Notifications</a></li>
+                <li><a href="#">System</a></li>
+                <li><a href="#">Logs</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Monitoring Dashboard</h1>
+            </div>
+
+            <div class="metrics">
+                <div class="application_form" data-href="application_forms/afMaterial_License.html">
+                    <h3>Material License</h3>
+                </div>
+                <div class="application_form" data-href="application_forms/afRadiation_Facility_License.html">
+                    <h3>Radiation Facility License</h3>
+                </div>
+                <div class="application_form" data-href="application_forms/afRadioactive_Materials_and_Purpose(s)_of_Use.html">
+                    <h3>Radioactive Materials and Purpose(s) of Use</h3>
+                </div>
+                <div class="application_form" data-href="application_forms/afRadiation_Monitoring_Instrumentation.html">
+                    <h3>Radiation Monitoring Instrumentation</h3>
+                </div>
+                <div class="application_form" data-href="application_forms/afRadiation_Workers.html">
+                    <h3>Radiation Workers</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add click event listeners to each application_form element
+            document.querySelectorAll('.application_form').forEach(element => {
+                element.addEventListener('click', () => {
+                    // Navigate to the URL specified in the data-href attribute
+                    window.location.href = element.getAttribute('data-href');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for License</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+        /* Your existing CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: white;
+        }
+
+        .instructions {
+            font-size: 16px;
+            background-color: #f8f9fa;
+            border: 2px solid black;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 50px;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block; 
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-navigation button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-navigation button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-navigation button[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .submit-button {
+            background-color: #28a745;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
+        }
+        h3, h4 {
+            margin-bottom: 20px;
+        }
+
+        .item {
+            border: 2px solid black;
+            padding: 50px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+  
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;    
+            cursor: pointer;
+            margin: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-file-input {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 20px;
+        }
+
+        .custom-file-label:hover {
+            background-color: #0056b3;
+        }
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .form-row label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-row input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-row textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+        .country-code-select {
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .phone-number {
+            width: calc(100% - 120px);
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PNRI/NRD SUPPLEMENTARY FORM B RADIATION MONITORING/MEASURING INSTRUMENTATION</h1>
+
+    <div class="form-container">
+        <form action="handler.php" method="post" enctype="multipart/form-data">
+            <!-- Form fields -->
+
+            <!-- Page 1 -->
+            <div class="form-page active">
+                <h2>I. PERSONNEL MONITORING (PASSIVE) DOSIMETERS </h2>
+
+                <div class="form-section" id="items-container-1">
+                    <div class="item" id="item-1">
+                        <div class="form-group">
+                            <label for="type-1">Type</label>
+                            <input type="text" id="type-1" name="type[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity-1">Quantity</label>
+                            <input type="text" id="quantity-1" name="quantity[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier-1">Name of Supplier/s</label>
+                            <input type="text" id="supplier-1" name="supplier[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-1">Address of Supplier/s</label>
+                            <input type="text" id="address-1" name="address[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="radiation-1">Type of Radiation Detected</label>
+                            <input type="text" id="radiation-1" name="radiation[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency-1">Frequency of Change</label>
+                            <input type="text" id="frequency-1" name="frequency[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="provider-1">Name of Dosimetry Service Provider</label>
+                            <input type="text" id="provider-1" name="provider[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="provider-address-1">Address of Dosimetry Service Provider</label>
+                            <input type="text" id="provider-address-1" name="provider_address[]">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="add-item-button-1">+ Add Item</button>
+            </div>
+
+            <div class="form-page">
+                <h2>II. DIRECT READING (ACTIVE) DOSIMETERS</h2>
+
+                <div class="form-section" id="items-container-2">
+                    <div class="item" id="item-2">
+                        <div class="form-group">
+                            <label for="type-2">Type</label>
+                            <input type="text" id="type-2" name="type[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity-2">Quantity</label>
+                            <input type="text" id="quantity-2" name="quantity[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier-2">Name of Supplier/s</label>
+                            <input type="text" id="supplier-2" name="supplier[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="address-2">Address of Supplier/s</label>
+                            <input type="text" id="address-2" name="address[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sensitivity-2">Sensitivity Range</label>
+                            <input type="text" id="sensitivity-2" name="sensitivity[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="calibration-date-2">Date of Last Calibration</label>
+                            <input type="date" id="calibration-date-2" name="calibration_date[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="calibration-service-2">Name of Calibration Service Provider</label>
+                            <input type="text" id="calibration-service-2" name="calibration_service[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="calibration-address-2">Address of Calibration Service Provider</label>
+                            <input type="text" id="calibration-address-2" name="calibration_address[]">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="add-item-button-2">+ Add Item</button>
+            </div>
+
+            <div class="form-page">
+                <h2>ATTACHMENTS</h2>
+                <div class="form-row">
+                    <label for="layout">Calibration Certificates of Radiation Survey Instruments</label>
+                    <input type="file" id="layout" name="layout" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="rooms">Technical Specifications of Radiation Survey Instruments </label>
+                    <input type="file" id="rooms" name="rooms" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="shielding">Copy of Contract with Dosimetry Service Provider</label>
+                    <input type="file" id="shielding" name="shielding" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="ventilation">Others (Please indicate) </label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                    <textarea id="rooms-remarks" name="rooms-remarks" placeholder="Remarks"></textarea>
+                </div>
+            </div>
+
+            <!-- Add other pages here -->
+
+            <div class="form-navigation">
+                <button type="button" class="prev-page">Previous</button>
+                <button type="button" class="next-page">Next</button>
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Function to add a new item for the corresponding section
+            function addItem(containerId) {
+                var container = $("#" + containerId);
+                var itemCount = container.children(".item").length + 1;
+                var newItem = container.children(".item").first().clone();
+
+                // Update the IDs and names of the new item's elements
+                newItem.find("input, textarea, select").each(function() {
+                    var id = $(this).attr("id");
+                    var name = $(this).attr("name");
+
+                    if (id) {
+                        var newId = id.replace(/\d+$/, itemCount);
+                        $(this).attr("id", newId);
+                    }
+
+                    if (name) {
+                        var newName = name.replace(/\[\d+\]/, "[" + (itemCount - 1) + "]");
+                        $(this).attr("name", newName);
+                    }
+
+                    $(this).val(""); // Clear the value
+                });
+
+                newItem.attr("id", "item-" + itemCount); // Update the item's ID
+                container.append(newItem);
+            }
+
+            // Add item button click events
+            $("#add-item-button-1").click(function() {
+                addItem("items-container-1");
+            });
+
+            $("#add-item-button-2").click(function() {
+                addItem("items-container-2");
+            });
+
+            // Pagination functionality
+            var currentPage = 0;
+            var pages = $(".form-page");
+
+            function showPage(index) {
+                pages.removeClass("active").eq(index).addClass("active");
+                $(".prev-page").prop("disabled", index === 0);
+                $(".next-page").prop("disabled", index === pages.length - 1);
+            }
+
+            $(".next-page").click(function() {
+                if (currentPage < pages.length - 1) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            $(".prev-page").click(function() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            showPage(currentPage);
+        });
+    </script>
+</body>
+</html>

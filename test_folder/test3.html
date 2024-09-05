@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .summary-section {
+            margin-bottom: 20px;
+        }
+
+        .summary-section h2 {
+            font-size: 18px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .summary-section p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .summary-section .label {
+            font-weight: bold;
+        }
+
+        .summary-section .value {
+            margin-left: 10px;
+        }
+
+        .attachment-check {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .no-attachment {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Application Summary</h1>
+
+        <div class="summary-section">
+            <h2>I. Application Information</h2>
+            <p><span class="label">Application Type:</span> <span class="value" id="applicationType"></span></p>
+            <p><span class="label">Type of License:</span> <span class="value" id="licenseType"></span></p>
+        </div>
+
+        <div class="summary-section">
+            <h2>II. General Information</h2>
+            <p><span class="label">Company Name:</span> <span class="value" id="companyName"></span></p>
+            <p><span class="label">Address:</span> <span class="value" id="address"></span></p>
+            <p><span class="label">Head of the Company:</span> <span class="value" id="headOfCompany"></span></p>
+            <p><span class="label">Telephone Number:</span> <span class="value" id="telephoneNumber"></span></p>
+            <p><span class="label">Fax Number:</span> <span class="value" id="faxNumber"></span></p>
+            <p><span class="label">Email:</span> <span class="value" id="email"></span></p>
+        </div>
+
+        <div class="summary-section">
+            <h2>III. Contact Information</h2>
+            <p><span class="label">Contact Name:</span> <span class="value" id="contactName"></span></p>
+            <p><span class="label">Position/Title:</span> <span class="value" id="contactPosition"></span></p>
+            <p><span class="label">Address:</span> <span class="value" id="contactAddress"></span></p>
+            <p><span class="label">Telephone/Mobile Phone Number:</span> <span class="value" id="contactPhone"></span></p>
+            <p><span class="label">Fax Number:</span> <span class="value" id="contactFax"></span></p>
+            <p><span class="label">Email:</span> <span class="value" id="contactEmail"></span></p>
+        </div>
+
+        <div class="summary-section">
+            <h2>IV. Attachments</h2>
+            <p><span class="label">Layout Plan:</span> <span class="value attachment-check" id="layoutAttachment"></span></p>
+            <p><span class="label">Radiation Monitoring/Measuring Instrumentation:</span> <span class="value attachment-check" id="roomsAttachment"></span></p>
+            <p><span class="label">Radiation Workers and Their Training and Experience:</span> <span class="value attachment-check" id="shieldingAttachment"></span></p>
+            <p><span class="label">Proof of Legal Status:</span> <span class="value attachment-check" id="ventilationAttachment"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Example data from the form submission
+        const formData = JSON.parse(localStorage.getItem('formData')) || {};
+
+        document.getElementById('applicationType').textContent = formData.applicationType || '';
+        document.getElementById('licenseType').textContent = formData.licenseType || '';
+        document.getElementById('companyName').textContent = formData.companyName || '';
+        document.getElementById('address').textContent = formData.address || '';
+        document.getElementById('headOfCompany').textContent = formData.headOfCompany || '';
+        document.getElementById('telephoneNumber').textContent = formData.telephoneNumber || '';
+        document.getElementById('faxNumber').textContent = formData.faxNumber || '';
+        document.getElementById('email').textContent = formData.email || '';
+        document.getElementById('contactName').textContent = formData.contactName || '';
+        document.getElementById('contactPosition').textContent = formData.contactPosition || '';
+        document.getElementById('contactAddress').textContent = formData.contactAddress || '';
+        document.getElementById('contactPhone').textContent = formData.contactPhone || '';
+        document.getElementById('contactFax').textContent = formData.contactFax || '';
+        document.getElementById('contactEmail').textContent = formData.contactEmail || '';
+
+        // Check attachments
+        document.getElementById('layoutAttachment').textContent = formData.layoutAttachment ? 'Attached' : 'No Attachment';
+        document.getElementById('roomsAttachment').textContent = formData.roomsAttachment ? 'Attached' : 'No Attachment';
+        document.getElementById('shieldingAttachment').textContent = formData.shieldingAttachment ? 'Attached' : 'No Attachment';
+        document.getElementById('ventilationAttachment').textContent = formData.ventilationAttachment ? 'Attached' : 'No Attachment';
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for License</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+        /* Your existing styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: white;
+        }
+
+        .instructions {
+            font-size: 16px;
+            background-color: #f8f9fa;
+            border: 2px solid black;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 50px;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block; 
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-navigation button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-navigation button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-navigation button[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .submit-button {
+            background-color: #28a745;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
+        }
+        h3, h4 {
+            margin-bottom: 20px;
+        }
+
+        .item {
+            border: 2px solid black;
+            padding: 50px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+  
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;    
+            cursor: pointer;
+            margin: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-file-input {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 20px;
+        }
+
+        .custom-file-label:hover {
+            background-color: #0056b3;
+        }
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .form-row label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-row input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-row textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+        .country-code-select {
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .phone-number {
+            width: calc(100% - 120px);
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .form-group {
+    margin-bottom: 15px;
+}
+    </style>
+</head>
+<body>
+
+    <h1>PNRI/NRD SUPPLEMENTARY FORM A RADIOACTIVE MATERIALS AND PURPOSE(S) OF USE
+         
+        </h1>
+    
+
+    <div class="form-container">
+        <form action="handler.php" method="post" enctype="multipart/form-data">
+            <!-- Form fields -->
+        
+            <!-- Page 1 -->
+            <div class="form-page">
+                <h2>I.	DETAILS OF UNSEALED SOURCES</h2>
+                
+                <div class="form-section" id="unsealed-items-container"> <!-- Updated id to be unique -->
+                    <div class="item" id="unsealed-item-1">
+                        <div class="form-group">
+                            <label for="source-1">Radionuclide</label>
+                            <input type="text" id="source-1" name="unsealed_source[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="manufacturer-1">Maximum Activity (MBq) at any one time </label>
+                            <input type="text" id="manufacturer-1" name="unsealed_manufacturer[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="model-1">Physical/Chemical Form</label>
+                            <input type="text" id="model-1" name="unsealed_model[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity-1">Manufacturer/Supplier</label>
+                            <input type="text" id="quantity-1" name="unsealed_quantity[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="max-amount-1">Purpose of Use</label>
+                            <input type="text" id="max-amount-1" name="unsealed_max_amount[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="purpose-1">Normal Storage or Location</label>
+                            <input type="text" id="purpose-1" name="unsealed_purpose[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="remarks-1">Status/Remarks (For amendment or renewal only)</label>
+                            <input type="text" id="remarks-1" name="unsealed_remarks[]">
+                        </div>
+                    </div>
+                    <button type="button" id="add-unsealed-item-button">+ Add Item</button> <!-- Updated id to be unique -->
+                </div>
+            </div>
+
+            <!-- Page 2 -->
+            <div class="form-page">
+                <h2>II.	DETAILS OF SEALED SOURCES</h2>
+                
+                <div class="form-section" id="sealed-items-container"> <!-- Updated id to be unique -->
+                    <div class="item" id="sealed-item-1">
+                        <div class="form-group">
+                            <label for="sealed-source-1">Radionuclide</label>
+                            <input type="text" id="sealed-source-1" name="sealed_source[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="reference-date-1">Activity (MBq) at Reference Date</label>
+                            <input type="date" id="reference-date-1" name="sealed_reference_date[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-purpose-1">Purpose of Use</label>
+                            <input type="text" id="sealed-purpose-1" name="sealed_purpose[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-location-1">Normal Storage or Location</label>
+                            <input type="text" id="sealed-location-1" name="sealed_location[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-manufacturer-1">Manufacturer/Supplier</label>
+                            <input type="text" id="sealed-manufacturer-1" name="sealed_manufacturer[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-model-1">Model (if applicable)</label>
+                            <input type="text" id="sealed-model-1" name="sealed_model[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-serial-number-1">Serial Number (if applicable)</label>
+                            <input type="text" id="sealed-serial-number-1" name="sealed_serial_number[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-remarks-1">Status/Remarks (For amendment or renewal only)</label>
+                            <input type="text" id="sealed-remarks-1" name="sealed_remarks[]">
+                        </div>
+                    </div>
+                    <button type="button" id="add-sealed-item-button">+ Add Item</button> <!-- Updated id to be unique -->
+                </div>
+                
+            </div>
+            <div class="form-page">
+                <h2>ATTACHMENTS</h2>
+                <div class="form-row">
+                    <label for="layout">Supporting literature for first use radiopharmaceuticals </label>
+                    <input type="file" id="layout" name="layout" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="rooms">Supplier agreement for order forms</label>
+                    <input type="file" id="rooms" name="rooms" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="shielding">Sealed Source Certificate/s (for each type/model)</label>
+                    <input type="file" id="shielding" name="shielding" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="ventilation">Certificate of Design Approval for Special Form Radioactive Material</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">Initial Leak Test Certificate (for each source)</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">Return-to-Supplier Agreement (for each source)</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">Others (Please indicate)</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                    <textarea id="rooms-remarks" name="rooms-remarks" placeholder="Remarks"></textarea>
+                </div>
+            </div>
+
+            <div class="form-navigation">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="submit" id="submitBtn" class="submit-button" style="display: none;">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            let currentPage = 0;
+            showPage(currentPage);
+
+            function showPage(n) {
+                const pages = $(".form-page");
+                pages.removeClass("active").eq(n).addClass("active");
+                $("#prevBtn").toggle(n > 0);
+                $("#nextBtn").toggle(n < pages.length - 1);
+                $("#submitBtn").toggle(n === pages.length - 1);
+            }
+
+            window.nextPrev = function (n) {
+                const pages = $(".form-page");
+                if (n === 1 && !validateForm()) return false;
+                currentPage += n;
+                if (currentPage >= pages.length) {
+                    $("#submitBtn").click();
+                } else {
+                    showPage(currentPage);
+                }
+            };
+
+            function validateForm() {
+                // Your validation logic here
+                return true;
+            }
+
+            let unsealedCounter = 2;
+            let sealedCounter = 2;
+
+            $("#add-unsealed-item-button").on("click", function () {
+                const newItem = `
+                    <div class="item" id="unsealed-item-${unsealedCounter}">
+                        <div class="form-group">
+                            <label for="source-${unsealedCounter}">Radionuclide</label>
+                            <input type="text" id="source-${unsealedCounter}" name="unsealed_source[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="manufacturer-${unsealedCounter}">Maximum Activity (MBq) at any one time </label>
+                            <input type="text" id="manufacturer-${unsealedCounter}" name="unsealed_manufacturer[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="model-${unsealedCounter}">Physical/Chemical Form</label>
+                            <input type="text" id="model-${unsealedCounter}" name="unsealed_model[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity-${unsealedCounter}">Manufacturer/Supplier</label>
+                            <input type="text" id="quantity-${unsealedCounter}" name="unsealed_quantity[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="max-amount-${unsealedCounter}">Purpose of Use</label>
+                            <input type="text" id="max-amount-${unsealedCounter}" name="unsealed_max_amount[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="purpose-${unsealedCounter}">Normal Storage or Location</label>
+                            <input type="text" id="purpose-${unsealedCounter}" name="unsealed_purpose[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="remarks-${unsealedCounter}">Status/Remarks (For amendment or renewal only)</label>
+                            <input type="text" id="remarks-${unsealedCounter}" name="unsealed_remarks[]">
+                        </div>
+                    </div>
+                `;
+                $("#unsealed-items-container").append(newItem);
+                unsealedCounter++;
+            });
+
+            $("#add-sealed-item-button").on("click", function () {
+                const newItem = `
+                    <div class="item" id="sealed-item-${sealedCounter}">
+                        <div class="form-group">
+                            <label for="sealed-source-${sealedCounter}">Radionuclide</label>
+                            <input type="text" id="sealed-source-${sealedCounter}" name="sealed_source[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="reference-date-${sealedCounter}">Activity (MBq) at Reference Date</label>
+                            <input type="date" id="reference-date-${sealedCounter}" name="sealed_reference_date[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-purpose-${sealedCounter}">Purpose of Use</label>
+                            <input type="text" id="sealed-purpose-${sealedCounter}" name="sealed_purpose[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-location-${sealedCounter}">Normal Storage or Location</label>
+                            <input type="text" id="sealed-location-${sealedCounter}" name="sealed_location[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-manufacturer-${sealedCounter}">Manufacturer/Supplier</label>
+                            <input type="text" id="sealed-manufacturer-${sealedCounter}" name="sealed_manufacturer[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-model-${sealedCounter}">Model (if applicable)</label>
+                            <input type="text" id="sealed-model-${sealedCounter}" name="sealed_model[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-serial-number-${sealedCounter}">Serial Number (if applicable)</label>
+                            <input type="text" id="sealed-serial-number-${sealedCounter}" name="sealed_serial_number[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="sealed-remarks-${sealedCounter}">Status/Remarks (For amendment or renewal only)</label>
+                            <input type="text" id="sealed-remarks-${sealedCounter}" name="sealed_remarks[]">
+                        </div>
+                    </div>
+                `;
+                $("#sealed-items-container").append(newItem);
+                sealedCounter++;
+            });
+        });
+    </script>
+
+</body>
+</html>

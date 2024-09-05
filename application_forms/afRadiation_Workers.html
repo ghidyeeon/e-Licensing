@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for License</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <style>
+        /* Your CSS code */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: white;
+        }
+
+        .instructions {
+            font-size: 16px;
+            background-color: #f8f9fa;
+            border: 2px solid black;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 50px;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-navigation button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-navigation button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-navigation button[disabled] {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .submit-button {
+            background-color: #28a745;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
+        }
+
+        h3, h4 {
+            margin-bottom: 20px;
+        }
+
+        .item {
+            border: 2px solid black;
+            padding: 50px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;    
+            cursor: pointer;
+            margin: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-file-input {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 20px;
+        }
+
+        .custom-file-label:hover {
+            background-color: #0056b3;
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .form-row label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-row input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-row textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+        }
+
+        .country-code-select {
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .phone-number {
+            width: calc(100% - 120px);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PNRI/NRD SUPPLEMENTARY FORM C RADIATION WORKERS AND THEIR TRAINING AND QUALIFICATION</h1>
+
+    <div class="form-container">
+        <form action="handler.php" method="post" enctype="multipart/form-data">
+            <!-- Page 1 -->
+            <div class="form-page active">
+                <div class="form-section">
+                    <h2>I. SENIOR MANAGEMENT</h2>
+                    <label>CEO</label>
+                    <input type="text" name="first_nameCEO" placeholder="First Name" required>
+                    <input type="text" name="middle_nameCEO" placeholder="Middle Name" required>
+                    <input type="text" name="last_nameCEO" placeholder="Last Name" required>
+                    <input type="text" name="nationality_CEO" placeholder="Nationality" required>
+                    <input type="text" name="telephone_numberCEO" placeholder="Telephone Number" required>
+                    <input type="email" name="email_CEO" placeholder="E-Mail Address" required>
+                    <input type="email" name="training_CEO" placeholder="Radiation Safety Training" required>
+                    <label>Facility Manager</label>
+                    <input type="text" name="first_nameManager" placeholder="First Name" required>
+                    <input type="text" name="middle_nameManager" placeholder="Middle Name" required>
+                    <input type="text" name="last_nameManager" placeholder="Last Name" required>
+                    <input type="text" name="nationality_Manager" placeholder="Nationality" required>
+                    <input type="text" name="telephone_numberManager" placeholder="Telephone Number" required>
+                    <input type="email" name="email_Manager" placeholder="E-Mail Address" required>
+                    <input type="email" name="training_Manager" placeholder="Radiation Safety Training" required>
+                </div>
+            </div>
+
+            <!-- Page 2 -->
+            <div class="form-page">
+                <div class="form-section">
+                    <h2>II. RADIATION PROTECTION OFFICER/S</h2>
+                    <label>Radiation Protection Officer</label>
+                    <input type="text" name="first_nameRPO" placeholder="First Name" required>
+                    <input type="text" name="middle_nameRPO" placeholder="Middle Name" required>
+                    <input type="text" name="last_nameRPO" placeholder="Last Name" required>
+                    <input type="text" name="education_RPO" placeholder="Educational Qualification" required>
+                    <input type="text" name="telephone_numberRPO" placeholder="Telephone Number" required>
+                    <input type="email" name="email_RPO" placeholder="E-Mail Address" required>
+                    <input type="email" name="training_RPO" placeholder="Radiation Safety Training" required>
+                    <label>Assistant Radiation Protection Officer</label>
+                    <input type="text" name="first_nameARPO" placeholder="First Name" required>
+                    <input type="text" name="middle_nameARPO" placeholder="Middle Name" required>
+                    <input type="text" name="last_nameARPO" placeholder="Last Name" required>
+                    <input type="text" name="education_ARPO" placeholder="Educational Qualification" required>
+                    <input type="text" name="telephone_numberARPO" placeholder="Telephone Number" required>
+                    <input type="email" name="email_ARPO" placeholder="E-Mail Address" required>
+                    <input type="email" name="training_ARPO" placeholder="Radiation Safety Training" required>
+                </div>
+            </div>
+
+            <!-- Page 3 -->
+            <div class="form-page">
+                <h2>Assistant Radiation Protection Officer/s</h2>
+
+                <div class="form-section" id="assistant-rpo-container-1">
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="first_nameARPO">First Name</label>
+                            <input type="text" id="first_nameARPO" name="first_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="middle_nameARPO">Middle Name</label>
+                            <input type="text" id="middle_nameARPO" name="middle_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_nameARPO">Last Name</label>
+                            <input type="text" id="last_nameARPO" name="last_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="educationARPO">Educational Qualification</label>
+                            <input type="text" id="educationARPO" name="education_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone_numberARPO">Telephone Number</label>
+                            <input type="number" id="telephone_numberARPO" name="telephone_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailARPO">E-Mail Address</label>
+                            <input type="email" id="emailARPO" name="email_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="trainingARPO">Radiation Safety Training</label>
+                            <input type="email" id="trainingARPO" name="training_ARPO[]">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <button type="button" id="add-item-button-1">Add Item</button>
+                </div>
+            </div>
+
+            <!-- Page 4 -->
+            <div class="form-page">
+                <h2>AUTHORIZED PERSONNEL</h2>
+
+                <div class="form-section" id="assistant-rpo-container-2">
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="first_nameARPO">First Name</label>
+                            <input type="text" id="first_nameARPO" name="first_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="middle_nameARPO">Middle Name</label>
+                            <input type="text" id="middle_nameARPO" name="middle_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_nameARPO">Last Name</label>
+                            <input type="text" id="last_nameARPO" name="last_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="educationARPO">Educational Qualification</label>
+                            <input type="text" id="educationARPO" name="education_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone_numberARPO">Telephone Number</label>
+                            <input type="number" id="telephone_numberARPO" name="telephone_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailARPO">E-Mail Address</label>
+                            <input type="email" id="emailARPO" name="email_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="trainingARPO">Radiation Safety Training</label>
+                            <input type="email" id="trainingARPO" name="training_ARPO[]">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <button type="button" id="add-item-button-2">Add Item</button>
+                </div>
+            </div>
+
+            <div class="form-page">
+                <h2>ATTACHMENTS</h2>
+                <div class="form-row">
+                    <label for="layout">Official Appointment of the RPO/ARPO</label>
+                    <input type="file" id="layout" name="layout" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="rooms">Proof of qualification, training, and experience requirements of Facility Manager/Supervisor </label>
+                    <input type="file" id="rooms" name="rooms" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="shielding">Proof of qualification, training, and experience requirements of RPO </label>
+                    <input type="file" id="shielding" name="shielding" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+    
+                <div class="form-row">
+                    <label for="ventilation">Proof of qualification, training, and experience requirements of Assistant RPO</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">Proof of qualification, training, and experience requirements of Authorized Personnel</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                </div>
+                <div class="form-row">
+                    <label for="ventilation">Others (Please indicate)</label>
+                    <input type="file" id="ventilation" name="ventilation" accept=".docx, .jpeg, .png, .pdf">
+                    <textarea id="rooms-remarks" name="rooms-remarks" placeholder="Remarks"></textarea>
+                </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="form-navigation">
+                <button type="button" id="prev-page" disabled>Previous</button>
+                <button type="button" id="next-page">Next</button>
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            let currentPage = 0;
+            const formPages = $(".form-page");
+
+            function showPage(pageIndex) {
+                formPages.removeClass("active");
+                $(formPages[pageIndex]).addClass("active");
+                $("#prev-page").prop("disabled", pageIndex === 0);
+                $("#next-page").prop("disabled", pageIndex === formPages.length - 1);
+            }
+
+            $("#next-page").click(function () {
+                if (currentPage < formPages.length - 1) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            $("#prev-page").click(function () {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            // Initially show the first page
+            showPage(currentPage);
+
+            // Add item functionality for Page 3
+            $("#add-item-button-1").click(function () {
+                let newItem = `
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="first_nameARPO">First Name</label>
+                            <input type="text" name="first_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="middle_nameARPO">Middle Name</label>
+                            <input type="text" name="middle_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_nameARPO">Last Name</label>
+                            <input type="text" name="last_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="educationARPO">Educational Qualification</label>
+                            <input type="text" name="education_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone_numberARPO">Telephone Number</label>
+                            <input type="number" name="telephone_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailARPO">E-Mail Address</label>
+                            <input type="email" name="email_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="trainingARPO">Radiation Safety Training</label>
+                            <input type="email" name="training_ARPO[]">
+                        </div>
+                    </div>
+                `;
+                $("#assistant-rpo-container-1").append(newItem);
+            });
+
+            // Add item functionality for Page 4
+            $("#add-item-button-2").click(function () {
+                let newItem = `
+                    <div class="item">
+                        <div class="form-group">
+                            <label for="first_nameARPO">First Name</label>
+                            <input type="text" name="first_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="middle_nameARPO">Middle Name</label>
+                            <input type="text" name="middle_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_nameARPO">Last Name</label>
+                            <input type="text" name="last_NARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="educationARPO">Educational Qualification</label>
+                            <input type="text" name="education_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone_numberARPO">Telephone Number</label>
+                            <input type="number" name="telephone_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailARPO">E-Mail Address</label>
+                            <input type="email" name="email_ARPO[]">
+                        </div>
+                        <div class="form-group">
+                            <label for="trainingARPO">Radiation Safety Training</label>
+                            <input type="email" name="training_ARPO[]">
+                        </div>
+                    </div>
+                `;
+                $("#assistant-rpo-container-2").append(newItem);
+            });
+        });
+    </script>
+</body>
+</html>
