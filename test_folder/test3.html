@@ -3,129 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application Summary</title>
+    <title>Log In</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: auto;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .summary-section {
-            margin-bottom: 20px;
-        }
-
-        .summary-section h2 {
-            font-size: 18px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-
-        .summary-section p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
-
-        .summary-section .label {
-            font-weight: bold;
-        }
-
-        .summary-section .value {
-            margin-left: 10px;
-        }
-
-        .attachment-check {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        .no-attachment {
-            color: red;
-            font-weight: bold;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/assets/images/nartbuilding.jpg');
+    background-size: cover;
+}
+.container{
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
+}
+.container .form {
+    padding: 30px;
+}
+.container .form .title {
+    font-size: 27px;
+    font-weight: 600;
+    position: relative;
+}
+.form .title::before {
+    content: '';    
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: #4070F4;
+    border-radius: 25px;
+}
+.form .input-field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+.input-field input {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+}
+.input-field i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+}
+.input-field i.icon {
+    left: 0;
+}
+.input-field i.showhidePassword {
+    right: 0;
+}
+.form .checkbox-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.checkbox-text .checkbox-content {
+    display: flex;
+    align-items: center;
+}
+.checkbox-content input {
+    margin: 0 8px -2px 4px;
+    accent-color: #4070f4;
+}
+.form a.text {
+    color: #4070F4;
+    text-decoration: none;
+}
+.form a:hover {
+    text-decoration: underline;
+}
+.form .text {
+    color: #333;
+    font-size: 14px;
+}
+.form .button {
+    margin-top: 35px;
+}
+.form button input {
+    border: none;
+    background-color: #4070F4;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #4070F4;
+    transition: all 0.3sec ease;
+}
+.button input:hover {
+    background-color: #265df2;
+}
     </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-
     <div class="container">
-        <h1>Application Summary</h1>
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Login</span>
 
-        <div class="summary-section">
-            <h2>I. Application Information</h2>
-            <p><span class="label">Application Type:</span> <span class="value" id="applicationType"></span></p>
-            <p><span class="label">Type of License:</span> <span class="value" id="licenseType"></span></p>
-        </div>
-
-        <div class="summary-section">
-            <h2>II. General Information</h2>
-            <p><span class="label">Company Name:</span> <span class="value" id="companyName"></span></p>
-            <p><span class="label">Address:</span> <span class="value" id="address"></span></p>
-            <p><span class="label">Head of the Company:</span> <span class="value" id="headOfCompany"></span></p>
-            <p><span class="label">Telephone Number:</span> <span class="value" id="telephoneNumber"></span></p>
-            <p><span class="label">Fax Number:</span> <span class="value" id="faxNumber"></span></p>
-            <p><span class="label">Email:</span> <span class="value" id="email"></span></p>
-        </div>
-
-        <div class="summary-section">
-            <h2>III. Contact Information</h2>
-            <p><span class="label">Contact Name:</span> <span class="value" id="contactName"></span></p>
-            <p><span class="label">Position/Title:</span> <span class="value" id="contactPosition"></span></p>
-            <p><span class="label">Address:</span> <span class="value" id="contactAddress"></span></p>
-            <p><span class="label">Telephone/Mobile Phone Number:</span> <span class="value" id="contactPhone"></span></p>
-            <p><span class="label">Fax Number:</span> <span class="value" id="contactFax"></span></p>
-            <p><span class="label">Email:</span> <span class="value" id="contactEmail"></span></p>
-        </div>
-
-        <div class="summary-section">
-            <h2>IV. Attachments</h2>
-            <p><span class="label">Layout Plan:</span> <span class="value attachment-check" id="layoutAttachment"></span></p>
-            <p><span class="label">Radiation Monitoring/Measuring Instrumentation:</span> <span class="value attachment-check" id="roomsAttachment"></span></p>
-            <p><span class="label">Radiation Workers and Their Training and Experience:</span> <span class="value attachment-check" id="shieldingAttachment"></span></p>
-            <p><span class="label">Proof of Legal Status:</span> <span class="value attachment-check" id="ventilationAttachment"></span></p>
+                <form action="login.php" method="POST">
+                    <div class="input-field">
+                        <input type="text" placeholder="Username/Email" required>
+                        <i class="fa-solid fa-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="passwordClass" placeholder="Password" required>
+                        <i class="fa-solid fa-lock icon"></i>
+                        <i class="fa-regular fa-eye-slash showhidePassword"></i>
+                    </div>
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="logCheck">
+                            <label for="logCheck" class="text">Remember Me</label>
+                        </div>
+                        <a href="#" class="text">Forgot Password?</a>
+                    </div>
+                    <div class="input-field button">
+                        <input type="button" value="Login" required>
+                    </div>
+                    <!-- Google Sign-In Button -->
+                    
+                </form>
+                <div class="login-signup">
+                    <span class="text">Not yet Registered?</span>
+                    <a href="registrationform.html" class="text sign-up-text">Signup now</a>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script src="loginscript.js"></script>
     <script>
-        // Example data from the form submission
-        const formData = JSON.parse(localStorage.getItem('formData')) || {};
+        async function getAccessToken() {
+            const payload = new URLSearchParams();
+            payload.append('grant_type', 'client_credentials');
+            payload.append('client_id', clientId);
+            payload.append('client_secret', clientSecret);
 
-        document.getElementById('applicationType').textContent = formData.applicationType || '';
-        document.getElementById('licenseType').textContent = formData.licenseType || '';
-        document.getElementById('companyName').textContent = formData.companyName || '';
-        document.getElementById('address').textContent = formData.address || '';
-        document.getElementById('headOfCompany').textContent = formData.headOfCompany || '';
-        document.getElementById('telephoneNumber').textContent = formData.telephoneNumber || '';
-        document.getElementById('faxNumber').textContent = formData.faxNumber || '';
-        document.getElementById('email').textContent = formData.email || '';
-        document.getElementById('contactName').textContent = formData.contactName || '';
-        document.getElementById('contactPosition').textContent = formData.contactPosition || '';
-        document.getElementById('contactAddress').textContent = formData.contactAddress || '';
-        document.getElementById('contactPhone').textContent = formData.contactPhone || '';
-        document.getElementById('contactFax').textContent = formData.contactFax || '';
-        document.getElementById('contactEmail').textContent = formData.contactEmail || '';
+            try {
+                const response = await fetch(tokenUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: payload
+                });
 
-        // Check attachments
-        document.getElementById('layoutAttachment').textContent = formData.layoutAttachment ? 'Attached' : 'No Attachment';
-        document.getElementById('roomsAttachment').textContent = formData.roomsAttachment ? 'Attached' : 'No Attachment';
-        document.getElementById('shieldingAttachment').textContent = formData.shieldingAttachment ? 'Attached' : 'No Attachment';
-        document.getElementById('ventilationAttachment').textContent = formData.ventilationAttachment ? 'Attached' : 'No Attachment';
+                const data = await response.json();
+
+                if (response.ok) {
+                    console.log('Access Token:', data.access_token);
+                    return data.access_token;
+                } else {
+                    console.error('Failed to obtain access token:', data);
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error obtaining access token:', error);
+                return null;
+            }
+        }
+
+        async function fetchData(accessToken) {
+            try {
+                const response = await fetch(apiEndpoint, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Fetched Data:', data);
+                    return data;
+                } else {
+                    console.error('Failed to fetch data:', response.status, response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        async function main() {
+            const accessToken = await getAccessToken();
+
+            if (accessToken) {
+                await fetchData(accessToken);
+            }
+        }
+
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+            // Here, send the token to your server for verification and further actions.
+        }
+
+        main();
     </script>
-
 </body>
 </html>
