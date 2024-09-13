@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 
 $host = "localhost";
-$dbname = "users";
+$dbname = "client";
 $db_user = "root";
 $db_pass = "";
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_password = trim($_POST['password']);
 
     
-    $stmt = $conn->prepare("SELECT id, username, password FROM facility WHERE username = :username LIMIT 1");
+    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = :username LIMIT 1");
     $stmt->bindParam(':username', $input_username);
     $stmt->execute();
 
