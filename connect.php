@@ -5,12 +5,12 @@ session_start();
 // Database connection parameters
 $host = "localhost"; // MySQL server (usually localhost)
 $dbname = "users"; // Replace with your database name
-$username = "root"; // Replace with your MySQL username
-$password = ""; // Replace with your MySQL password
+$db_user = "root"; // Replace with your MySQL username
+$db_pass = ""; // Replace with your MySQL password
 
 // Create a new PDO instance to connect to the database
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $db_user, $db_pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
@@ -18,9 +18,9 @@ try {
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve user input
-    $input_username = $_POST['username'];
-    $input_password = $_POST['password'];
+    // Retrieve user input and sanitize
+    $input_username = trim($_POST['username']);
+    $input_password = trim($_POST['password']);
 
     // Prepare a statement to find the user by username
     $stmt = $conn->prepare("SELECT id, username, password FROM facility WHERE username = :username LIMIT 1");
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify the password
         if (password_verify($input_password, $user['password'])) {
             // Password is correct, start the session
-            //$_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             header("Location: dashboard.php"); // Redirect to a dashboard or home page
             exit;
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // No user found with the provided username
-        echo "No account found with that username.";
+        echo "No account found with that username.";    
     }
 }
 ?>
