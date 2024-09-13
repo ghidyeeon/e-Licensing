@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <style>
-        /* Your existing styles */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -209,13 +209,13 @@
 
     <div class="form-container">
         <form action="handler.php" method="post" enctype="multipart/form-data">
-            <!-- Form fields -->
+           
         
             <!-- Page 1 -->
             <div class="form-page">
                 <h2>I.	DETAILS OF UNSEALED SOURCES</h2>
                 
-                <div class="form-section" id="unsealed-items-container"> <!-- Updated id to be unique -->
+                <div class="form-section" id="unsealed-items-container"> 
                     <div class="item" id="unsealed-item-1">
                         <div class="form-group">
                             <label for="source-1">Radionuclide</label>
@@ -246,7 +246,7 @@
                             <input type="text" id="remarks-1" name="unsealed_remarks[]">
                         </div>
                     </div>
-                    <button type="button" id="add-unsealed-item-button">+ Add Item</button> <!-- Updated id to be unique -->
+                    <button type="button" id="add-unsealed-item-button">+ Add Item</button> 
                 </div>
             </div>
 
@@ -254,7 +254,7 @@
             <div class="form-page">
                 <h2>II.	DETAILS OF SEALED SOURCES</h2>
                 
-                <div class="form-section" id="sealed-items-container"> <!-- Updated id to be unique -->
+                <div class="form-section" id="sealed-items-container"> 
                     <div class="item" id="sealed-item-1">
                         <div class="form-group">
                             <label for="sealed-source-1">Radionuclide</label>
@@ -289,7 +289,7 @@
                             <input type="text" id="sealed-remarks-1" name="sealed_remarks[]">
                         </div>
                     </div>
-                    <button type="button" id="add-sealed-item-button">+ Add Item</button> <!-- Updated id to be unique -->
+                    <button type="button" id="add-sealed-item-button">+ Add Item</button> 
                 </div>
                 
             </div>
@@ -362,7 +362,7 @@
             };
 
             function validateForm() {
-                // Your validation logic here
+                
                 return true;
             }
 

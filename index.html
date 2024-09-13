@@ -120,7 +120,6 @@ body{
     background-color: #265df2;
 }
     </style>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div class="container">
@@ -148,22 +147,7 @@ body{
                     <div class="input-field button">
                         <input type="button" value="Login" required>
                     </div>
-                    <!-- Google Sign-In Button -->
-                    <div class="input-field button">
-                        <div id="g_id_onload"
-                            data-client_id="552398281225-851f9bck2biajgdt5e62na25r11s00a4.apps.googleusercontent.com"
-                            data-context="signin"
-                            data-ux_mode="popup"
-                            data-callback="handleCredentialResponse"
-                            data-auto_prompt="false">
-                        </div>
-                        <div class="g_id_signin" data-type="standard"></div>
-                    </div>
                 </form>
-                <div class="login-signup">
-                    <span class="text">Not yet Registered?</span>
-                    <a href="registrationform.html" class="text sign-up-text">Signup now</a>
-                </div>
             </div>
         </div>
     </div>
@@ -231,7 +215,7 @@ body{
 
         function handleCredentialResponse(response) {
             console.log("Encoded JWT ID token: " + response.credential);
-            // Here, send the token to your server for verification and further actions.
+        
         }
 
         main();

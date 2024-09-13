@@ -203,7 +203,7 @@
 
     <div class="form-container">
         <form action="handler.php" method="post" enctype="multipart/form-data">
-            <!-- Form fields -->
+           
         
             <!-- Page 1 -->
             <div class="form-page active"> 
@@ -409,11 +409,11 @@
                 showPage(currentPage - 1);
             });
     
-            // Handle form submission
+            
             document.querySelector('form').addEventListener('submit', function (e) {
                 e.preventDefault();
     
-                // Collect all form data
+                
                 const formData = new FormData(this);
                 const data = {};
     
@@ -421,10 +421,10 @@
                     data[key] = value;
                 });
     
-                // Save form data to localStorage
+                
                 localStorage.setItem('formData', JSON.stringify(data));
     
-                // Redirect to the new page
+                
                 window.location.href = 'test2.html';
             });
     

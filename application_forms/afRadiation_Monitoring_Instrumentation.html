@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <style>
-        /* Your existing CSS */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -206,7 +206,6 @@
 
     <div class="form-container">
         <form action="handler.php" method="post" enctype="multipart/form-data">
-            <!-- Form fields -->
 
             <!-- Page 1 -->
             <div class="form-page active">
@@ -317,7 +316,7 @@
                 </div>
             </div>
 
-            <!-- Add other pages here -->
+            
 
             <div class="form-navigation">
                 <button type="button" class="prev-page">Previous</button>
@@ -329,13 +328,13 @@
 
     <script>
         $(document).ready(function() {
-            // Function to add a new item for the corresponding section
+            
             function addItem(containerId) {
                 var container = $("#" + containerId);
                 var itemCount = container.children(".item").length + 1;
                 var newItem = container.children(".item").first().clone();
 
-                // Update the IDs and names of the new item's elements
+                
                 newItem.find("input, textarea, select").each(function() {
                     var id = $(this).attr("id");
                     var name = $(this).attr("name");
@@ -350,14 +349,14 @@
                         $(this).attr("name", newName);
                     }
 
-                    $(this).val(""); // Clear the value
+                    $(this).val(""); 
                 });
 
-                newItem.attr("id", "item-" + itemCount); // Update the item's ID
+                newItem.attr("id", "item-" + itemCount); 
                 container.append(newItem);
             }
 
-            // Add item button click events
+            
             $("#add-item-button-1").click(function() {
                 addItem("items-container-1");
             });
@@ -366,7 +365,7 @@
                 addItem("items-container-2");
             });
 
-            // Pagination functionality
+            
             var currentPage = 0;
             var pages = $(".form-page");
 

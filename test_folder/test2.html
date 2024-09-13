@@ -46,20 +46,20 @@
         <h1>Form Submission Summary</h1>
 
         <div class="form-summary" id="form-summary">
-            <!-- The data will be populated here -->
+           
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Retrieve form data from localStorage
+           
             const formData = JSON.parse(localStorage.getItem('formData'));
 
-            // Check if data is available
+            
             if (formData) {
                 const formSummary = document.getElementById('form-summary');
 
-                // Populate the summary with form data
+                
                 for (const key in formData) {
                     if (formData.hasOwnProperty(key)) {
                         const div = document.createElement('div');
@@ -68,7 +68,7 @@
                     }
                 }
             } else {
-                // If no data is found, show a message
+                
                 document.getElementById('form-summary').innerHTML = '<p>No form data found. Please submit the form first.</p>';
             }
         });
