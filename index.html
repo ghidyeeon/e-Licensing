@@ -129,11 +129,11 @@ body{
 
                 <form action="connect.php" method="POST">
                     <div class="input-field">
-                        <input type="text" placeholder="Username/Email" required>
+                        <input type="text" name="username" placeholder="Username" required>
                         <i class="fa-solid fa-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="passwordClass" placeholder="Password" required>
+                        <input type="password" name="password" class="passwordClass" placeholder="Password" required>
                         <i class="fa-solid fa-lock icon"></i>
                         <i class="fa-regular fa-eye-slash showhidePassword"></i>
                     </div>
@@ -145,7 +145,8 @@ body{
                         <a href="#" class="text">Forgot Password?</a>
                     </div>
                     <div class="input-field button">
-                        <input type="button" value="Login" required>
+                        <input type="submit" value="Login">
+
                     </div>
                 </form>
             </div>
