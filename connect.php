@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_password = $_POST['password'];
 
     // Prepare a statement to find the user by username
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = :username LIMIT 1");
+    $stmt = $conn->prepare("SELECT id, username, password FROM facility WHERE username = :username LIMIT 1");
     $stmt->bindParam(':username', $input_username);
     $stmt->execute();
 
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify the password
         if (password_verify($input_password, $user['password'])) {
             // Password is correct, start the session
-            $_SESSION['user_id'] = $user['id'];
+            //$_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             header("Location: dashboard.php"); // Redirect to a dashboard or home page
             exit;
